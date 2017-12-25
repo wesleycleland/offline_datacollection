@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Data Tables</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="SHORTCUT ICON" href="css/images/gps4.png">
+  <title>Mobile Data Collection Application</title>
+
+  <link rel="stylesheet" href="css/app.css">
+
+  <script>
+  //acquire location
+  function acquireGeoLocation() {
+          // Throw an error if no update is received every 30 seconds
+          var options = {enableHighAccuracy: true, maximumAge: 60000};
+          watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+          }
+          // onSuccess Geolocation
+          function onSuccess(position) {
+            document.getElementById("mylocation").innerHTML = "Accuracy : " + position.coords.accuracy + " Meters" + ",  Heading : " + position.coords.heading + " Degrees";
+            document.getElementById("latitude").value = position.coords.latitude;
+            document.getElementById("longitude").value = position.coords.longitude;
+          }
+          // onError Callback receives a PositionError object
+          function onError(error) {
+              alert('code: ' + error.code + '\n' +
+                    'message: ' + error.message + '\n');
+          }
+  </script>
+
+</head>
+
+<body>
+    <div>
+      <form id="collectionform">
+        <label style="background-color: #fff" for="name">Name:</label>
+        <input type="text" id="name" value="" required/><br />
+        <label style="background-color: #fff" for="latitude">Latitude:</label>
+        <input type="text" id="latitude" value="" required/><br />
+        <label style="background-color: #fff" for="longitude">Longitude:</label>
+        <input type="text" id="longitude" value="" required/><br />
+        <span id="mylocation"></span><br /><br />
+        <label style="background-color: #fff" for="attachment">Attachment:</label>
+        <input type="file" id="attachment"><br /><br />
+        <input type="button" onclick="acquireGeoLocation()" value="Acquire GPS" />
+        <input type="submit" onclick="" value="Submit Form" />
+     </form>
+    </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

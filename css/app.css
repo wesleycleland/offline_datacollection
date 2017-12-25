@@ -1,0 +1,25 @@
+.top-bar{
+  height: 100%;
+  background-color: #fff;
+}
+.top-bar ul{
+  background-color: #000;
+}
+.position-left {
+    background-color: #474747;
+      height: 100%;
+
+}
+.menu > li > a{
+  background-color: #474747;
+  color: #fff;
+}
+.off-canvas.position-left {
+  color: #fff;
+}
+label{
+  background-color: #474747;
+}
+form {
+  padding: 25px;
+}

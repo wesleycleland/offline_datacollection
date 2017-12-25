@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" href="css/images/gps4.png">
+    <title>Mobile Data Collection Application</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+  <script>
+  //acquire location
+  function acquireGeoLocation() {
+          // Throw an error if no update is received every 30 seconds
+          var options = {enableHighAccuracy: true, maximumAge: 60000};
+          watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+          }
+          // onSuccess Geolocation
+          function onSuccess(position) {
+              document.getElementById("mylocation").innerHTML = "Accuracy : " + position.coords.accuracy + " Meters" + ",  Heading : " + position.coords.heading + " Degrees";
+              document.getElementById("latitude").value = position.coords.latitude;
+              document.getElementById("longitude").value = position.coords.longitude;
+          }
+          // onError Callback receives a PositionError object
+          function onError(error) {
+              alert('code: ' + error.code + '\n' +
+                    'message: ' + error.message + '\n');
+          }
+  </script>
+
+</head>
+
+<body><nav class="top-bar" data-topbar>
+  <div class="off-canvas-wrapper" style="">
+      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+          <div class="off-canvas position-left" id="my-info" data-off-canvas data-position="left">
+              <div class="row column">
+                  <h5>Settings</h5>
+                      <ul class="vertical accordion-menu menu" data-accordion-menu>
+                          <li id="">
+                              <a href="#">Menu 1</a>
+                                  <ul class="menu vertical sublevel-1">
+                                      <li>
+                                      <label><input type="checkbox" value="">Option 1</label>
+                                      <label><input type="checkbox" value="">Option 2</label>
+                                      <label><input type="checkbox" value="">Option 3</label>
+                                      <label><input type="checkbox" value="">Option 4</label>
+                                  </ul>
+                              </li>
+                          <li id="">
+                              <a href="#">Menu 2</a>
+                                  <ul class="menu vertical sublevel-1">
+                                      <li>
+                                      <label><input type="checkbox" value="">Option 1</label>
+                                      <label><input type="checkbox" value="">Option 2</label>
+                                      <label><input type="checkbox" value="">Option 3</label>
+                                      <label><input type="checkbox" value="">Option 4</label>
+                                      </li>
+                                  </ul>
+                          </li>
+                          <li id="">
+                              <a href="#">Menu 3</a>
+                                  <ul class="menu vertical sublevel-1">
+                                      <li>
+                                      <label><input type="checkbox" value="">Option 1</label>
+                                      <label><input type="checkbox" value="">Option 2</label>
+                                      <label><input type="checkbox" value="">Option 3</label>
+                                      <label><input type="checkbox" value="">Option 4</label>
+                                      </li>
+                                  </ul>
+                          </li>
+                      </ul>
+              </div>
+          </div>
+          <div class="off-canvas-content" data-off-canvas-content>
+              <div class="title-bar">
+                  <div class="title-bar-left">
+                      <button class="menu-icon" type="button" data-open="my-info"></button>
+                      <span class="title-bar-title">Mobile Data Collector</span>
+                  </div>
+              </div>
+              <div class="row small-10 align-center">
+                  <div class="row">
+                  </div>
+              </div>
+          </div>
+          <form id="collectionform">
+            <label style="background-color: #fff" for="name">Name:</label>
+            <input type="text" id="name" value="" required/>
+            <label style="background-color: #fff" for="latitude">Latitude:</label>
+            <input type="text" id="latitude" value="" required/>
+            <label style="background-color: #fff" for="longitude">Longitude:</label>
+            <input type="text" id="longitude" value="" required/>
+            <span id="mylocation"></span><br /><br />
+            <label style="background-color: #fff" for="attachment">Attachment:</label>
+            <input type="file" id="attachment"><br /><br />
+            <input type="button" onclick="acquireGeoLocation()" value="Acquire GPS" />
+            <input type="submit" onclick="" value="Submit Form" />
+         </form>
+ </div>
+</div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
